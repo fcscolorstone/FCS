@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>net461</TargetFrameworks>
+    <Copyright>fcs.one</Copyright>
+    <ApplicationIcon />
+    <OutputType>Library</OutputType>
+    <StartupObject />
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Genesis.Ensure" Version="2.0.0" />
+    <PackageReference Include="Nethereum.HdWallet" Version="3.2.0" />
+    <PackageReference Include="Nethereum.Web3" Version="3.2.0" />
+    <PackageReference Include="System.Reactive" Version="4.1.5" />
+  </ItemGroup>
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net461' ">
+    <PackageReference Include="ReactiveUI" Version="9.16.4" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BTChatWallet.UI\BTChatWallet.UI.csproj" />
+  </ItemGroup>
+</Project>
