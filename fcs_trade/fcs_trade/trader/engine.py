@@ -10,7 +10,7 @@ from queue import Empty, Queue
 from threading import Thread
 from typing import Any, Sequence
 
-from fcs_trade.event import Event, EventEngine
+from fcs_trade.fcs_trade.event import Event, EventEngine
 from .app import BaseApp
 from .event import (
     EVENT_TICK,
