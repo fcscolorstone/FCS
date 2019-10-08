@@ -6,7 +6,7 @@ from abc import ABC, abstractmethod
 from typing import Any, Sequence
 from copy import copy
 
-from fcs_trade.fcs_trade.event import Event, EventEngine
+from fcs_trade.event import Event, EventEngine
 from .event import (
     EVENT_TICK,
     EVENT_ORDER,
