@@ -2,7 +2,7 @@
 Event type string used in VN Trader.
 """
 
-from fcs_trade.fcs_trade.event import EVENT_TIMER  # noqa
+from fcs_trade.event import EVENT_TIMER  # noqa
 
 EVENT_TICK = "eTick."
 EVENT_TRADE = "eTrade."
