@@ -69,7 +69,8 @@
       <HintPath>..\packages\Nethereum.Contracts.3.2.0\lib\net451\Nethereum.Contracts.dll</HintPath>
     </Reference>
     <Reference Include="Nethereum.HdWallet, Version=2.5.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Nethereum.HdWallet.2.5.1\lib\net452\Nethereum.HdWallet.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Users\Administrator\.nuget\packages\nethereum.hdwallet\3.2.0\lib\net452\Nethereum.HdWallet.dll</HintPath>
     </Reference>
     <Reference Include="Nethereum.Hex, Version=3.0.0.0, Culture=neutral, PublicKeyToken=8768a594786aba4e, processorArchitecture=MSIL">
       <HintPath>..\packages\Nethereum.Hex.3.2.0\lib\net451\Nethereum.Hex.dll</HintPath>

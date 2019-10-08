@@ -1,7 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\BTChatWallet",
+    "\\fcs_trade\\fcs_trade"
   ],
-  "SelectedNode": "\\fcs_trade",
+  "SelectedNode": "\\BTChatWallet\\FCS.BTChatWallet.sln",
   "PreviewInSolutionExplorer": false
 }

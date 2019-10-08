@@ -69,7 +69,7 @@ namespace FCS.BTChatWallet
 
             ViewModel.Url = "https://ropsten.infura.io";
 
-            WatchEventRpc();
+            //WatchEventRpc();
         }
 
         public async void WatchEventRpc()
