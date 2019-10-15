@@ -53,9 +53,9 @@ namespace Nethereum.UI.ViewModels
             Ensure.ArgumentNotNullOrEmpty(Path, "No path set");
 
             Accounts.Clear();
-            var wallet = string.IsNullOrEmpty(SeedPassword) ? 
-                new HdWallet.Wallet(Words, SeedPassword, Path) : 
-                new HdWallet.Wallet(Words, Path);
+            var wallet = string.IsNullOrEmpty(SeedPassword) ?
+                new HdWallet.Wallet(Words, Path)  : 
+                new HdWallet.Wallet(Words, SeedPassword, Path);
 
             for (int i = 0; i < 20; i++)
             {
