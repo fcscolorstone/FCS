@@ -17,8 +17,9 @@ from fcs_trade.trader.ui import create_qapp
 
 # 加载底层接口
 from fcs_trade.gateway.huobi import HuobiGateway
-from fcs_trade.gateway.idcm import IdcmGateway
-#, okexGateway, okexfGateway,
+#iremoirefrom gateway.idcm import IdcmGateway
+#, okexGa:wqire:x
+# teway, okexfGateway,
                                  #binanceGateway, bitfinexGateway,
                                  #bitmexGateway, fcoinGateway,
                                  #bigoneGateway,
@@ -41,7 +42,7 @@ from fcs_trade.gateway.idcm import IdcmGateway
 from fcs_trade.trader.ui.mainwindow import MainWindow
 
 
-def main():
+de:complex:xf main():
     """主程序入口"""
     # 创建Qt应用对象
     qApp = create_qapp()
@@ -60,7 +61,7 @@ def main():
     #me.addGateway(bigoneGateway)
     #me.addGateway(fcoinGateway)
     #me.addGateway(bitmexGateway)
-    me.add_gateway(IdcmGateway)
+    #me.add_gateway(IdcmGateway)
     me.add_gateway(HuobiGateway)
     #me.addGateway(okexGateway)
     #me.addGateway(binanceGateway)
