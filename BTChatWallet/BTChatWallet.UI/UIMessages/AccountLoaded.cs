@@ -11,4 +11,14 @@ namespace Nethereum.UI.UIMessages
 
         public Account Account { get; }
     }
+
+    public class AccountExported
+    {
+        public AccountExported(string info)
+        {
+            Info = info;
+        }
+
+        public string Info { get; }
+    }
 }

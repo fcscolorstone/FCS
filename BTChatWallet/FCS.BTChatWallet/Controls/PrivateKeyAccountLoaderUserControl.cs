@@ -17,8 +17,11 @@ namespace FCS.BTChatWallet
         public PrivateKeyAccountLoaderUserControl()
         {
             InitializeComponent();
+
             this.Bind(ViewModel, x => x.PrivateKey, x => x.txtPrivateKey.Text);
             this.BindCommand(ViewModel, x => x.LoadAccountFromPrivateKeyCommand, x => x.btnLoadAccountFromPrivateKey);
+
+            this.BindCommand(ViewModel, x => x.ExportPrivateKeyCommand, x => x.btnExportPK);
         }
 
       

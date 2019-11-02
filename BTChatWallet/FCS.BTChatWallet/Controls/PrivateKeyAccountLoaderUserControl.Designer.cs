@@ -32,11 +32,13 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtPrivateKey = new System.Windows.Forms.TextBox();
             this.fileOpenerKeyStore = new System.Windows.Forms.OpenFileDialog();
+            this.btnExportPK = new System.Windows.Forms.Button();
+            this.lb_export_pk = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnLoadAccountFromPrivateKey
             // 
-            this.btnLoadAccountFromPrivateKey.Location = new System.Drawing.Point(198, 52);
+            this.btnLoadAccountFromPrivateKey.Location = new System.Drawing.Point(12, 53);
             this.btnLoadAccountFromPrivateKey.Name = "btnLoadAccountFromPrivateKey";
             this.btnLoadAccountFromPrivateKey.Size = new System.Drawing.Size(192, 30);
             this.btnLoadAccountFromPrivateKey.TabIndex = 17;
@@ -60,15 +62,36 @@
             this.txtPrivateKey.Size = new System.Drawing.Size(341, 23);
             this.txtPrivateKey.TabIndex = 13;
             // 
+            // btnExportPK
+            // 
+            this.btnExportPK.Location = new System.Drawing.Point(226, 53);
+            this.btnExportPK.Name = "btnExportPK";
+            this.btnExportPK.Size = new System.Drawing.Size(164, 30);
+            this.btnExportPK.TabIndex = 18;
+            this.btnExportPK.Text = "导出私钥";
+            this.btnExportPK.UseVisualStyleBackColor = true;
+            // 
+            // lb_export_pk
+            // 
+            this.lb_export_pk.ForeColor = System.Drawing.Color.OrangeRed;
+            this.lb_export_pk.Location = new System.Drawing.Point(12, 90);
+            this.lb_export_pk.Name = "lb_export_pk";
+            this.lb_export_pk.Padding = new System.Windows.Forms.Padding(10);
+            this.lb_export_pk.Size = new System.Drawing.Size(378, 98);
+            this.lb_export_pk.TabIndex = 19;
+            this.lb_export_pk.Text = "111";
+            // 
             // PrivateKeyAccountLoaderUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.lb_export_pk);
+            this.Controls.Add(this.btnExportPK);
             this.Controls.Add(this.btnLoadAccountFromPrivateKey);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtPrivateKey);
             this.Name = "PrivateKeyAccountLoaderUserControl";
-            this.Size = new System.Drawing.Size(406, 96);
+            this.Size = new System.Drawing.Size(406, 200);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -80,5 +103,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtPrivateKey;
         private System.Windows.Forms.OpenFileDialog fileOpenerKeyStore;
+        private System.Windows.Forms.Button btnExportPK;
+        private System.Windows.Forms.Label lb_export_pk;
     }
 }

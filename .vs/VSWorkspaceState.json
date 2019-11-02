@@ -1,7 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\BTChatWallet"
+    "\\BTChatWallet",
+    "\\BTChatWallet\\BTChatWallet.UI",
+    "\\BTChatWallet\\BTChatWallet.UI\\ViewModels"
   ],
   "SelectedNode": "\\BTChatWallet\\FCS.BTChatWallet.sln",
   "PreviewInSolutionExplorer": false
