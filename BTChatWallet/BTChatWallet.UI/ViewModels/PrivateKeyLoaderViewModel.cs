@@ -59,11 +59,9 @@ namespace Nethereum.UI.ViewModels
 
         public string ExportPrivateKey()
         {
-            var pk = _account?.PrivateKey;
+            _export_info = _account?.PrivateKey;
 
-            MessageBus.Current.SendMessage(new AccountExported(pk));
-
-            return pk;
+            return _export_info;
         }
     }
 }

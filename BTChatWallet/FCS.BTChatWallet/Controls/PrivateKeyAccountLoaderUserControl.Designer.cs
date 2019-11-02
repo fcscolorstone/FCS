@@ -74,12 +74,12 @@
             // lb_export_pk
             // 
             this.lb_export_pk.ForeColor = System.Drawing.Color.OrangeRed;
-            this.lb_export_pk.Location = new System.Drawing.Point(12, 90);
+            this.lb_export_pk.Location = new System.Drawing.Point(12, 86);
             this.lb_export_pk.Name = "lb_export_pk";
             this.lb_export_pk.Padding = new System.Windows.Forms.Padding(10);
             this.lb_export_pk.Size = new System.Drawing.Size(378, 98);
             this.lb_export_pk.TabIndex = 19;
-            this.lb_export_pk.Text = "111";
+            this.lb_export_pk.Text = "1112222222222222222223";
             // 
             // PrivateKeyAccountLoaderUserControl
             // 
@@ -91,7 +91,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtPrivateKey);
             this.Name = "PrivateKeyAccountLoaderUserControl";
-            this.Size = new System.Drawing.Size(406, 200);
+            this.Size = new System.Drawing.Size(406, 245);
             this.ResumeLayout(false);
             this.PerformLayout();
 

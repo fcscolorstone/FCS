@@ -21,6 +21,7 @@ namespace FCS.BTChatWallet
             this.Bind(ViewModel, x => x.PrivateKey, x => x.txtPrivateKey.Text);
             this.BindCommand(ViewModel, x => x.LoadAccountFromPrivateKeyCommand, x => x.btnLoadAccountFromPrivateKey);
 
+            this.Bind(ViewModel, x => x.ExportInfo, x => x.lb_export_pk.Text);
             this.BindCommand(ViewModel, x => x.ExportPrivateKeyCommand, x => x.btnExportPK);
         }
 

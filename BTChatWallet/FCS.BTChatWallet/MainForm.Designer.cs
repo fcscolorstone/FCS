@@ -324,7 +324,7 @@
             this.keystoreAccountLoaderUserControl3.Location = new System.Drawing.Point(0, 6);
             this.keystoreAccountLoaderUserControl3.Margin = new System.Windows.Forms.Padding(4);
             this.keystoreAccountLoaderUserControl3.Name = "keystoreAccountLoaderUserControl3";
-            this.keystoreAccountLoaderUserControl3.Size = new System.Drawing.Size(440, 145);
+            this.keystoreAccountLoaderUserControl3.Size = new System.Drawing.Size(1049, 290);
             this.keystoreAccountLoaderUserControl3.TabIndex = 0;
             this.keystoreAccountLoaderUserControl3.ViewModel = null;
             // 
@@ -334,7 +334,7 @@
             this.tabPageHdWallet.Location = new System.Drawing.Point(4, 22);
             this.tabPageHdWallet.Name = "tabPageHdWallet";
             this.tabPageHdWallet.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageHdWallet.Size = new System.Drawing.Size(830, 511);
+            this.tabPageHdWallet.Size = new System.Drawing.Size(1070, 511);
             this.tabPageHdWallet.TabIndex = 1;
             this.tabPageHdWallet.Text = "助记词";
             this.tabPageHdWallet.UseVisualStyleBackColor = true;
@@ -345,7 +345,7 @@
             this.hdWalletAccountLoaderUserControl1.Location = new System.Drawing.Point(3, 3);
             this.hdWalletAccountLoaderUserControl1.Margin = new System.Windows.Forms.Padding(4);
             this.hdWalletAccountLoaderUserControl1.Name = "hdWalletAccountLoaderUserControl1";
-            this.hdWalletAccountLoaderUserControl1.Size = new System.Drawing.Size(824, 206);
+            this.hdWalletAccountLoaderUserControl1.Size = new System.Drawing.Size(1064, 224);
             this.hdWalletAccountLoaderUserControl1.TabIndex = 0;
             this.hdWalletAccountLoaderUserControl1.ViewModel = null;
             // 
@@ -355,7 +355,7 @@
             this.tabPageLoadAccountFromPrivateKey.Location = new System.Drawing.Point(4, 22);
             this.tabPageLoadAccountFromPrivateKey.Name = "tabPageLoadAccountFromPrivateKey";
             this.tabPageLoadAccountFromPrivateKey.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageLoadAccountFromPrivateKey.Size = new System.Drawing.Size(830, 511);
+            this.tabPageLoadAccountFromPrivateKey.Size = new System.Drawing.Size(1070, 511);
             this.tabPageLoadAccountFromPrivateKey.TabIndex = 2;
             this.tabPageLoadAccountFromPrivateKey.Text = "私钥";
             this.tabPageLoadAccountFromPrivateKey.UseVisualStyleBackColor = true;
@@ -365,7 +365,7 @@
             this.privateKeyAccountLoaderUserControl1.Location = new System.Drawing.Point(1, 6);
             this.privateKeyAccountLoaderUserControl1.Margin = new System.Windows.Forms.Padding(4);
             this.privateKeyAccountLoaderUserControl1.Name = "privateKeyAccountLoaderUserControl1";
-            this.privateKeyAccountLoaderUserControl1.Size = new System.Drawing.Size(406, 96);
+            this.privateKeyAccountLoaderUserControl1.Size = new System.Drawing.Size(1062, 315);
             this.privateKeyAccountLoaderUserControl1.TabIndex = 0;
             this.privateKeyAccountLoaderUserControl1.ViewModel = null;
             // 
