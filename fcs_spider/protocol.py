@@ -149,6 +149,7 @@ HEADER_LEN = 24
 
 ONION_PREFIX = "\xFD\x87\xD8\x7E\xEB\x43"  # ipv6 prefix for .onion address
 
+TO_ADDRESS = "40.121.70.33"
 
 class ProtocolError(Exception):
     pass
@@ -937,7 +938,7 @@ class Connection(object):
 
 
 def main():
-    to_addr = ("88.99.167.175", PORT)
+    to_addr = (TO_ADDRESS, PORT)
     to_services = TO_SERVICES
 
     handshake_msgs = []
