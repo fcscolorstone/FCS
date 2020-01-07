@@ -1,0 +1,59 @@
+[ping]
+
+# Logfile
+logfile = log/ping.log
+
+# Network magic number
+magic_number = f20200101
+
+# Redis database number
+db = 0
+
+# Max. number of concurrent workers (greenlets) in a pool
+workers = 2000
+
+# Print debug output
+debug = False
+
+# Public IP address for network interface
+source_address = 0.0.0.0
+
+# Protocol version to use for outgoing version message
+protocol_version = 70015
+
+# User agent (BIP 0014) to use for outgoing version message
+# -----------------------------------------------------------------------------
+#                                 NOTE TO USERS
+# Please consider changing the user agent before running an instance of this
+# crawler. This is so that users will not confuse your crawler with another
+# instance that is already running and generating data for the project.
+# -----------------------------------------------------------------------------
+user_agent = /fcs.one:0.1.0/
+
+# Services to use for outgoing network address message
+services = 0
+
+# Set to 1 to receive all txs
+relay = 1
+
+# Socket timeout
+socket_timeout = 30
+
+# Run cron tasks every given interval
+cron_delay = 10
+
+# Limit max. nodes per IPv6 network prefix
+ipv6_prefix = 64
+nodes_per_ipv6_prefix = 1
+
+# Redis TTL for cached RTT
+ttl = 10800
+
+# Attempt to establish connection with .onion nodes
+onion = True
+
+# Tor proxy is required to connect to .onion address
+tor_proxy = 127.0.0.1:9050
+
+# Relative path to directory containing timestamp-prefixed JSON crawl files
+crawl_dir = data/crawl/f20200101
