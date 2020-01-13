@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="4.3.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AoteNiu.Core\AoteNiu.Core.csproj" />
+    <ProjectReference Include="..\AoteNiu.Data\AoteNiu.Data.csproj" />
+    <ProjectReference Include="..\AoteNiu.Service\AoteNiu.Service.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,11 @@
+{
+    // BASE
+    "E1000": {
+        "code": 1000,
+        "msg": "成功",
+        "msg_zh_tw": "成功",
+        "msg_en": "Success"
+    }
+
+ 
+}
