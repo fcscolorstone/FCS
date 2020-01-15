@@ -54,7 +54,7 @@ namespace AoteNiu.Service
                 {
                     FlushBinancePrice("BTC", "BTCUSDT", "0", cny);
                     Thread.Sleep(2000);
-                    FlushBinancePrice("ETH", "ETHUSDT", "0x000000000000000000",  cny);
+                    FlushBinancePrice("ETH", "ETHUSDT", "0x0000000000000000000000000000000000000000",  cny);
                     Thread.Sleep(2000);
                 }
             }
