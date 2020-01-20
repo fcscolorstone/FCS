@@ -76,7 +76,7 @@ namespace AoteNiu.Service
             try
             {
                 // rate api: 
-                var rateUrl = "http://data.block.cc/api/v1/exchange_rate";
+                var rateUrl = "http://data.block.cc/api/v1/exchange_rate?api_key=MD9L0LL3FFC9LZWUO2WXD7IYSVH1UNDRGK0Y6JMZ";
                 var request = (HttpWebRequest)WebRequest.Create(rateUrl);
 
                 request.Method = "GET";
