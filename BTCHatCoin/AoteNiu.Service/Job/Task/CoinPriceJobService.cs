@@ -52,7 +52,8 @@ namespace AoteNiu.Service
             Running = true;
             try
             {
-                var cny = GetCNY();
+                //var cny = GetCNY();
+                var cny = _PriceCNY;
                 if (cny > 0)
                 {
                     FlushBinancePrice("BTC", "BTCUSDT", "0", cny);
@@ -211,176 +212,176 @@ namespace AoteNiu.Service
             }
         }
 
-        private void FlushHuobiPrice(string key, string full, string address,  decimal cny)
-        {
-            try
-            {
-                // price api: 
-                var priceUrl = $"https://api.huobi.pro/market/trade?symbol={key}usdt";
-                var request = (HttpWebRequest)WebRequest.Create(priceUrl);
+        //private void FlushHuobiPrice(string key, string full, string address,  decimal cny)
+        //{
+        //    try
+        //    {
+        //        // price api: 
+        //        var priceUrl = $"https://api.huobi.pro/market/trade?symbol={key}usdt";
+        //        var request = (HttpWebRequest)WebRequest.Create(priceUrl);
 
-                request.Method = "GET";
-                request.Accept = "*/*";
-                request.ContentType = "application/json";
-                request.Timeout = 2000;
+        //        request.Method = "GET";
+        //        request.Accept = "*/*";
+        //        request.ContentType = "application/json";
+        //        request.Timeout = 2000;
 
-                int times = AoteNiuConst.HTTP_REQUEST_TRY_TIMES;
-                while (times-- >= 0)
-                {
-                    try
-                    {
-                        var rsp = (HttpWebResponse)request.GetResponse();
-                        if (rsp.StatusCode != HttpStatusCode.OK)
-                        {
-                            _log.Error($"FlushHuobiPrice rsp.StatusCode != HttpStatusCode.OK");
-                            return;
-                        }
+        //        int times = AoteNiuConst.HTTP_REQUEST_TRY_TIMES;
+        //        while (times-- >= 0)
+        //        {
+        //            try
+        //            {
+        //                var rsp = (HttpWebResponse)request.GetResponse();
+        //                if (rsp.StatusCode != HttpStatusCode.OK)
+        //                {
+        //                    _log.Error($"FlushHuobiPrice rsp.StatusCode != HttpStatusCode.OK");
+        //                    return;
+        //                }
 
-                        HuobiPriceModel price_data;
-                        using (var reader = new StreamReader(rsp.GetResponseStream()))
-                        {
-                            price_data = JsonConvert.DeserializeObject<HuobiPriceModel>(reader.ReadToEnd()) as HuobiPriceModel;
-                            if (null == price_data)
-                            {
-                                _log.Debug($"FlushHuobiPrice price_data null");
-                                return;
-                            }
-                        }
+        //                HuobiPriceModel price_data;
+        //                using (var reader = new StreamReader(rsp.GetResponseStream()))
+        //                {
+        //                    price_data = JsonConvert.DeserializeObject<HuobiPriceModel>(reader.ReadToEnd()) as HuobiPriceModel;
+        //                    if (null == price_data)
+        //                    {
+        //                        _log.Debug($"FlushHuobiPrice price_data null");
+        //                        return;
+        //                    }
+        //                }
 
-                        if (null == price_data.tick.data)
-                        {
-                            _log.Debug($"FlushHuobiPrice price_data.data null");
-                            return;
-                        }
+        //                if (null == price_data.tick.data)
+        //                {
+        //                    _log.Debug($"FlushHuobiPrice price_data.data null");
+        //                    return;
+        //                }
 
-                        decimal price =  price_data.tick.data[0].price;
+        //                decimal price =  price_data.tick.data[0].price;
                         
-                        var pr = _coinPriceService.GetBySymbol(key, AoteNiuConst.HUOBI);
-                        if (pr == null)
-                        {
-                            pr = new CoinPrice
-                            {
-                                address = address,
-                                platform = AoteNiuConst.HUOBI,
-                                symbol = key,
-                                full = full,
-                                price_usd = price,
-                                price = price * cny,
-                                ctime = DateTime.Now
-                            };
-                        }
-                        else
-                        {
-                            pr.price = price * cny;
-                            pr.price_usd = price;
-                        }
+        //                var pr = _coinPriceService.GetBySymbol(key, AoteNiuConst.HUOBI);
+        //                if (pr == null)
+        //                {
+        //                    pr = new CoinPrice
+        //                    {
+        //                        address = address,
+        //                        platform = AoteNiuConst.HUOBI,
+        //                        symbol = key,
+        //                        full = full,
+        //                        price_usd = price,
+        //                        price = price * cny,
+        //                        ctime = DateTime.Now
+        //                    };
+        //                }
+        //                else
+        //                {
+        //                    pr.price = price * cny;
+        //                    pr.price_usd = price;
+        //                }
 
-                        _coinPriceService.Update(pr);
-                    }
-                    catch (WebException ex)
-                    {
-                        Thread.Sleep(100);
-                        continue;
-                    }
+        //                _coinPriceService.Update(pr);
+        //            }
+        //            catch (WebException ex)
+        //            {
+        //                Thread.Sleep(100);
+        //                continue;
+        //            }
 
-                    break;
-                }
+        //            break;
+        //        }
 
-                if (times < 0)
-                {
-                    _log.Error($"FlushHuobiPrice: {key} failed !!!");
-                    return;
-                }
-            }
-            catch (Exception ex)
-            {
-                _log.Error(ex.ToString());
-                return;
-            }
-        }
+        //        if (times < 0)
+        //        {
+        //            _log.Error($"FlushHuobiPrice: {key} failed !!!");
+        //            return;
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        _log.Error(ex.ToString());
+        //        return;
+        //    }
+        //}
 
-        private void FlushCoinbasePrice(string key, string full, string address, decimal cny)
-        {
-            try
-            {
-                // price api: 
-                var priceUrl = $"https://api.pro.coinbase.com/products/{key}-USD/ticker";
-                var request = (HttpWebRequest)WebRequest.Create(priceUrl);
+        //private void FlushCoinbasePrice(string key, string full, string address, decimal cny)
+        //{
+        //    try
+        //    {
+        //        // price api: 
+        //        var priceUrl = $"https://api.pro.coinbase.com/products/{key}-USD/ticker";
+        //        var request = (HttpWebRequest)WebRequest.Create(priceUrl);
 
-                request.Method = "GET";
-                request.Accept = "*/*";
-                request.ContentType = "application/json";
-                request.Timeout = 2000;
+        //        request.Method = "GET";
+        //        request.Accept = "*/*";
+        //        request.ContentType = "application/json";
+        //        request.Timeout = 2000;
 
-                int times = AoteNiuConst.HTTP_REQUEST_TRY_TIMES;
-                while (times-- >= 0)
-                {
-                    try
-                    {
-                        var rsp = (HttpWebResponse)request.GetResponse();
-                        if (rsp.StatusCode != HttpStatusCode.OK)
-                        {
-                            _log.Debug($"FlushCoinbasePrice rsp.StatusCode != HttpStatusCode.OK");
-                            return;
-                        }
+        //        int times = AoteNiuConst.HTTP_REQUEST_TRY_TIMES;
+        //        while (times-- >= 0)
+        //        {
+        //            try
+        //            {
+        //                var rsp = (HttpWebResponse)request.GetResponse();
+        //                if (rsp.StatusCode != HttpStatusCode.OK)
+        //                {
+        //                    _log.Debug($"FlushCoinbasePrice rsp.StatusCode != HttpStatusCode.OK");
+        //                    return;
+        //                }
 
-                        CoinbasePriceModel price_data;
-                        using (var reader = new StreamReader(rsp.GetResponseStream()))
-                        {
-                            price_data = JsonConvert.DeserializeObject<CoinbasePriceModel>(reader.ReadToEnd()) as CoinbasePriceModel;
-                            if (null == price_data)
-                            {
-                                _log.Debug($"FlushCoinbasePrice price_data null");
-                                return;
-                            }
-                        }
+        //                CoinbasePriceModel price_data;
+        //                using (var reader = new StreamReader(rsp.GetResponseStream()))
+        //                {
+        //                    price_data = JsonConvert.DeserializeObject<CoinbasePriceModel>(reader.ReadToEnd()) as CoinbasePriceModel;
+        //                    if (null == price_data)
+        //                    {
+        //                        _log.Debug($"FlushCoinbasePrice price_data null");
+        //                        return;
+        //                    }
+        //                }
 
-                        decimal price = Convert.ToDecimal(price_data.price);
+        //                decimal price = Convert.ToDecimal(price_data.price);
 
-                        var pr = _coinPriceService.GetBySymbol(key, AoteNiuConst.COINBASE);
-                        if (pr == null)
-                        {
-                            pr = new CoinPrice
-                            {
-                                address = address,
-                                platform = AoteNiuConst.COINBASE,
-                                symbol = key,
-                                full = full,
-                                price_usd = price,
-                                price = price * cny,
-                                ctime = DateTime.Now
-                            };
-                        }
-                        else
-                        {
-                            pr.price = price * cny;
-                            pr.price_usd = price;
-                        }
+        //                var pr = _coinPriceService.GetBySymbol(key, AoteNiuConst.COINBASE);
+        //                if (pr == null)
+        //                {
+        //                    pr = new CoinPrice
+        //                    {
+        //                        address = address,
+        //                        platform = AoteNiuConst.COINBASE,
+        //                        symbol = key,
+        //                        full = full,
+        //                        price_usd = price,
+        //                        price = price * cny,
+        //                        ctime = DateTime.Now
+        //                    };
+        //                }
+        //                else
+        //                {
+        //                    pr.price = price * cny;
+        //                    pr.price_usd = price;
+        //                }
 
-                        _coinPriceService.Update(pr);
+        //                _coinPriceService.Update(pr);
 
-                        //_log.Debug($"flush the price of {key} success...{pr.price}");
-                    }
-                    catch (WebException ex)
-                    {
-                        Thread.Sleep(100);
-                        continue;
-                    }
+        //                //_log.Debug($"flush the price of {key} success...{pr.price}");
+        //            }
+        //            catch (WebException ex)
+        //            {
+        //                Thread.Sleep(100);
+        //                continue;
+        //            }
 
-                    break;
-                }
+        //            break;
+        //        }
 
-                if (times < 0)
-                {
-                    _log.Error($"FlushCoinbasePrice: {key} failed !!!");
-                    return;
-                }
-            }
-            catch (Exception ex)
-            {
-                _log.Error(ex.ToString());
-                return;
-            }
-        }
+        //        if (times < 0)
+        //        {
+        //            _log.Error($"FlushCoinbasePrice: {key} failed !!!");
+        //            return;
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        _log.Error(ex.ToString());
+        //        return;
+        //    }
+        //}
     }
 }
