@@ -22,6 +22,8 @@ namespace AoteNiu.Service
 
         private readonly ILog _log;
 
+        private decimal _PriceCNY = 7;
+
         private readonly ICoinPriceService _coinPriceService;
 
         /// <summary>
@@ -32,6 +34,7 @@ namespace AoteNiu.Service
         {
             this._log = LogManager.GetLogger(typeof(CoinPriceJobService));
             this._coinPriceService = coinPriceService;
+            this._PriceCNY = GetCNY();
         }
 
         /// <summary>
