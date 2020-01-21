@@ -52,12 +52,11 @@ namespace AoteNiu.Service
             Running = true;
             try
             {
-                var cny = _PriceCNY;
-                if (cny > 0)
+                if (_PriceCNY > 0)
                 {
-                    FlushBinancePrice("BTC", "BTCUSDT", "0", cny);
+                    FlushBinancePrice("BTC", "BTCUSDT", "0");
                     Thread.Sleep(2000);
-                    FlushBinancePrice("ETH", "ETHUSDT", "0x0000000000000000000000000000000000000000",  cny);
+                    FlushBinancePrice("ETH", "ETHUSDT", "0x0000000000000000000000000000000000000000");
                     Thread.Sleep(2000);
                 }
             }
@@ -126,7 +125,7 @@ namespace AoteNiu.Service
             }
         }
 
-        private void FlushBinancePrice(string key, string full, string address,  decimal cny)
+        private void FlushBinancePrice(string key, string full, string address)
         {
             try
             {
@@ -174,14 +173,14 @@ namespace AoteNiu.Service
                                 symbol = key,
                                 full = full,
                                 price_usd = price,
-                                price = price * cny,
+                                price = price * _PriceCNY,
                                 ctime = DateTime.Now
                             };
                         }
                         else
                         {
                             pr.price_usd = price;
-                            pr.price = price * cny;
+                            pr.price = price * _PriceCNY;
                         }
 
                         _coinPriceService.Update(pr);
