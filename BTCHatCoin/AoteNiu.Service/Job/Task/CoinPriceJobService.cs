@@ -73,7 +73,6 @@ namespace AoteNiu.Service
         {
             try
             {
-                //get exchange rate from block.cc
                 var rateUrl = "http://data.block.cc/api/v1/exchange_rate?api_key=MD9L0LL3FFC9LZWUO2WXD7IYSVH1UNDRGK0Y6JMZ";
                 var request = (HttpWebRequest)WebRequest.Create(rateUrl);
 
@@ -137,7 +136,7 @@ namespace AoteNiu.Service
                 request.Method = "GET";
                 request.Accept = "*/*";
                 request.ContentType = "application/json";
-                request.Timeout = 3000;
+                request.Timeout = 2000;
 
                 int times = AoteNiuConst.HTTP_REQUEST_TRY_TIMES;
                 while (times-- >= 0)
