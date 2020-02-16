@@ -130,7 +130,7 @@ namespace AoteNiu.Service
         {
             try
             {
-                // price api: 
+                // get coin price from binance
                 var priceUrl = $"https://api.binance.com/api/v3/ticker/price?symbol={key}USDT";
                 var request = (HttpWebRequest)WebRequest.Create(priceUrl);
 
@@ -185,12 +185,10 @@ namespace AoteNiu.Service
                         }
 
                         _coinPriceService.Update(pr);
-
-                        //_log.Debug($"flush the price of {key} success...{pr.price}");
                     }
                     catch (WebException ex)
                     {
-                        Thread.Sleep(100);
+                        Thread.Sleep(1000);
                         continue;
                     }
 
