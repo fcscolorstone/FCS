@@ -25,7 +25,8 @@ namespace AoteNiu.Service
             Guard.ArgumentNotEmpty(symbol, "symbol");
             Guard.ArgumentNotEmpty(platform, "platform");
 
-            return _coinPriceRepository.Find(x => (x.symbol.ToLower() == symbol.ToLower() && x.platform == platform))?.FirstOrDefault();
+            return _coinPriceRepository.Find(x => (x.symbol.ToLower() == symbol.ToLower() && 
+                                            x.platform.ToLower() == platform.ToLower()))?.FirstOrDefault();
         }
 
         public void Update(CoinPrice pr)
