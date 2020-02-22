@@ -37,5 +37,12 @@ namespace AoteNiu.Service
             _coinPriceRepository.Update(pr);
             return;
         }
+
+        public CoinPrice GetByAdress(string address)
+        {
+            Guard.ArgumentNotEmpty(address, "address");
+
+            return _coinPriceRepository.Find(x => (x.address.ToLower() == address.ToLower()))?.FirstOrDefault();
+        }
     }
 }
