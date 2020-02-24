@@ -90,6 +90,7 @@ namespace AoteNiu.Service
                         var rsp = (HttpWebResponse)request.GetResponse();
                         if (rsp.StatusCode != HttpStatusCode.OK)
                         {
+                            _log.Error($"GetCNY rsp.StatusCode != HttpStatusCode.OK");
                             return 0;
                         }
 
@@ -99,6 +100,7 @@ namespace AoteNiu.Service
                             rate_data = JsonConvert.DeserializeObject<BlockCCRateDataModel>(reader.ReadToEnd()) as BlockCCRateDataModel;
                             if (null == rate_data)
                             {
+                                _log.Error($"GetCNY rate_data null");
                                 return 0;
                             }
 
@@ -157,7 +159,7 @@ namespace AoteNiu.Service
                             price_data = JsonConvert.DeserializeObject<BinancePriceModel>(reader.ReadToEnd()) as BinancePriceModel;
                             if (null == price_data)
                             {
-                                _log.Debug($"FlushBinancePrice price_data null");
+                                _log.Error($"FlushBinancePrice price_data null");
                                 return;
                             }
                         }
