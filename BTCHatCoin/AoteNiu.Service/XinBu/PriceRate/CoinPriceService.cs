@@ -35,7 +35,6 @@ namespace AoteNiu.Service
 
             pr.utime = DateTime.Now;
             _coinPriceRepository.Update(pr);
-            return;
         }
 
         public CoinPrice GetByAdress(string address)

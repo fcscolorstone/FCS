@@ -10,5 +10,7 @@ namespace AoteNiu.Service
         CoinPrice GetBySymbol(string symbol, string platform);
 
         void Update(CoinPrice pr);
+
+        CoinPrice GetByAdress(string address);
     }
 }
