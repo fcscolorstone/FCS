@@ -209,5 +209,96 @@ namespace AoteNiu.Service
                 return;
             }
         }
+
+        private void FlushHuobiPrice(string key, string full, string address)
+        { 
+            try
+            {
+                // get coin price from huobi
+                var priceUrl = $"https://api.huobi.pro/market/trade?symbol={key}usdt";
+                var request = (HttpWebRequest)WebRequest.Create(priceUrl);
+
+                request.Method = "GET";
+                request.Accept = "*/*";
+                request.ContentType = "application/json";
+                request.Timeout = 2000;
+
+                int times = AoteNiuConst.HTTP_REQUEST_TRY_TIMES;
+                while (times-- >= 0)
+                {
+                    try
+                    {
+                        var rsp = (HttpWebResponse)request.GetResponse();
+                        if (rsp.StatusCode != HttpStatusCode.OK)
+                        {
+                            _log.Error($"FlushHuobiPrice rsp.StatusCode != HttpStatusCode.OK");
+                            return;
+                        }
+
+                        HuobiPriceModel price_data;
+                        using (var reader = new StreamReader(rsp.GetResponseStream()))
+                        {
+                            price_data = JsonConvert.DeserializeObject<HuobiPriceModel>(reader.ReadToEnd()) as HuobiPriceModel;
+                            if (null == price_data)
+                            {
+                                _log.Debug($"FlushHuobiPrice price_data null");
+                                return;
+                            }
+                        }
+
+                        if (null == price_data.tick.data)
+                        {
+                            _log.Debug($"FlushHuobiPrice price_data.data null");
+                            return;
+                        }
+
+                        decimal price = price_data.tick.data[0].price;
+
+                        var pr = _coinPriceService.GetBySymbol(key, AoteNiuConst.BINANCE);
+                        if (pr == null)
+                        {
+                            pr = new CoinPrice
+                            {
+                                address = address,
+                                platform = AoteNiuConst.BINANCE,
+                                symbol = key,
+                                full = full,
+                                price_usd = price,
+                                price = price * _PriceCNY,
+                                ctime = DateTime.Now
+                            };
+                        }
+                        else
+                        {
+                            pr.price = price * _PriceCNY;
+                            pr.price_usd = price;
+                        }
+
+                        _coinPriceService.Update(pr);
+
+                        //_log.Debug($"flush the price of {key} success...{pr.price}");
+                    }
+                    catch (WebException ex)
+                    {
+                        Thread.Sleep(100);
+                        continue;
+                    }
+
+                    break;
+                }
+
+                if (times < 0)
+                {
+                    _log.Error($"FlushHuobiPrice: {key} failed !!!");
+                    return;
+                }
+            }
+            catch (Exception ex)
+            {
+                _log.Error(ex.ToString());
+                return;
+            }
+        }
+
     }
 }
