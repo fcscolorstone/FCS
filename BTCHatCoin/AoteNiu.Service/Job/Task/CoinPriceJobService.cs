@@ -280,8 +280,6 @@ namespace AoteNiu.Service
                         }
 
                         _coinPriceService.Update(pr);
-
-                        //_log.Debug($"flush the price of {key} success...{pr.price}");
                     }
                     catch (WebException ex)
                     {
