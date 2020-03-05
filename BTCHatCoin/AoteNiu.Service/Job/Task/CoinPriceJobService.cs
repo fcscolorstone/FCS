@@ -259,13 +259,13 @@ namespace AoteNiu.Service
 
                         decimal price = price_data.tick.data[0].price;
 
-                        var pr = _coinPriceService.GetBySymbol(key, AoteNiuConst.BINANCE);
+                        var pr = _coinPriceService.GetBySymbol(key, AoteNiuConst.HUOBI);
                         if (pr == null)
                         {
                             pr = new CoinPrice
                             {
                                 address = address,
-                                platform = AoteNiuConst.BINANCE,
+                                platform = AoteNiuConst.HUOBI,
                                 symbol = key,
                                 full = full,
                                 price_usd = price,
