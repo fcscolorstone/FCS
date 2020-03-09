@@ -43,5 +43,12 @@ namespace AoteNiu.Service
 
             return _coinPriceRepository.Find(x => (x.address.ToLower() == address.ToLower()))?.FirstOrDefault();
         }
+
+        public CoinPrice GetByPlatform(string platform)
+        {
+            Guard.ArgumentNotEmpty(platform, "platform");
+
+            return _coinPriceRepository.Find(x => (x.platform.ToLower() == platform.ToLower()))?.FirstOrDefault();
+        }
     }
 }
