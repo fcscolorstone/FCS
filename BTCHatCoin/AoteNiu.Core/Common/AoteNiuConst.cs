@@ -36,7 +36,6 @@ namespace AoteNiu
         public static readonly string COINBASE = "coinbase";
 
         //// 基础冷参
-        public static readonly int Points_Charge_Money = 100;                           // 人民币与积分的兑换比例： 100：1 元;
         public static readonly long REGIST_INTERVEL = TimeSpan.TicksPerMinute;       // 短信发送间隔;
         public static readonly int REGISTER_REPEAT_MAX = 10;
         public static readonly int LEVEL_MAX = 10;                            // 最大等级;
