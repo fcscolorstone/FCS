@@ -303,5 +303,9 @@ namespace AoteNiu.Service
             }
         }
 
+        private void FlushCoinbasePrice(string key, string full, string address)
+        {
+           
+        }
     }
 }
