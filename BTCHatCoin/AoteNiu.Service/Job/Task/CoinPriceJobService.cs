@@ -341,13 +341,13 @@ namespace AoteNiu.Service
 
                         decimal price = Convert.ToDecimal(price_data.price);
 
-                        var pr = _coinPriceService.GetBySymbol(key, AoteNiuConst.HUOBI);
+                        var pr = _coinPriceService.GetBySymbol(key, AoteNiuConst.COINBASE);
                         if (pr == null)
                         {
                             pr = new CoinPrice
                             {
                                 address = address,
-                                platform = AoteNiuConst.HUOBI,
+                                platform = AoteNiuConst.COINBASE,
                                 symbol = key,
                                 full = full,
                                 price_usd = price,
