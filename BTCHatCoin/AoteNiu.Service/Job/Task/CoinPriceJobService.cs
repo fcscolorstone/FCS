@@ -74,7 +74,7 @@ namespace AoteNiu.Service
             try
             {
                 //get exchange rate from block.cc
-                var rateUrl = "http://data.block.cc/api/v1/exchange_rate?api_key=MD9M0LL3FFDCF8UO2WXD7IYSVH1UNDRG2KZT6BGT";
+                var rateUrl = "http://data.block.cc/api/v1/exchange_rate?api_key=SD9R0BVD4FDCF8UO2WXD7IYSGK3RTRG2KZTSR5U";
                 var request = (HttpWebRequest)WebRequest.Create(rateUrl);
 
                 request.Method = "GET";
