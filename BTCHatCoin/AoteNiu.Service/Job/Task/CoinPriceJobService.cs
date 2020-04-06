@@ -56,8 +56,6 @@ namespace AoteNiu.Service
                 {
                     FlushHuobiPrice("btc", "btcusdt", "0");
                     Thread.Sleep(2000);
-                    FlushHuobiPrice("eth", "ethusdt", "0x0000000000000000000000000000000000000000");
-                    Thread.Sleep(2000);
                 }
             }
             catch (Exception ex)
