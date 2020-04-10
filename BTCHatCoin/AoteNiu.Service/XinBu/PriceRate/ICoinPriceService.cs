@@ -11,7 +11,9 @@ namespace AoteNiu.Service
 
         void Update(CoinPrice pr);
 
-        CoinPrice GetByAdress(string address);
+        CoinPrice GetByAddress(string address);
+
+        void DelByAddress(string address);
 
         CoinPrice GetByPlatform(string paltform);
     }
