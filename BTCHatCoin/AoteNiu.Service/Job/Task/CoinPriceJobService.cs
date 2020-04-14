@@ -107,6 +107,7 @@ namespace AoteNiu.Service
                     }
                     catch (WebException)
                     {
+                        _log.Error($"try times = {times}");
                         Thread.Sleep(1000);
                         continue;
                     }
