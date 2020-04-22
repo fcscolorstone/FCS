@@ -56,6 +56,9 @@ namespace AoteNiu.Service
                 {
                     FlushHuobiPrice("btc", "btcusdt", "0");
                     Thread.Sleep(2000);
+
+                    FlushCoinbasePrice("BTC", "BTCUSDT", "0");
+                    Thread.Sleep(2000);
                 }
             }
             catch (Exception ex)
