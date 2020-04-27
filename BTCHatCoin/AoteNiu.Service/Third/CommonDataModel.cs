@@ -25,6 +25,8 @@ namespace AoteNiu.Service
     public class BlockCCRatesModel
     {
         public decimal CNY { get; set; }
+        public decimal USD { get; set; }
+        public decimal JPY { get; set; }
     }
 
     public class BlockCCPriceModel
