@@ -25,6 +25,7 @@ namespace AoteNiu.Service
         private decimal _PriceCNY = 7;
 
         private readonly ICoinPriceService _coinPriceService;
+        private readonly IBlockCcApiService _blockCcApiService;
 
         /// <summary>
         /// 默认构造函数：无参数
@@ -52,7 +53,8 @@ namespace AoteNiu.Service
             Running = true;
             try
             {
-                if (_PriceCNY > 0)
+                decimal cny = _blockCcApiService.GetCurrency(XinBu_Currency.CNY);
+                if (cny > 0)
                 {
                     FlushHuobiPrice("btc", "btcusdt", "0");
                     Thread.Sleep(2000);
