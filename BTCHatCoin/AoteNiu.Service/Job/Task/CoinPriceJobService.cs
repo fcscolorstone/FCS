@@ -30,11 +30,11 @@ namespace AoteNiu.Service
         /// <summary>
         /// 默认构造函数：无参数
         /// </summary>
-        public CoinPriceJobService(
-            ICoinPriceService coinPriceService)
+        public CoinPriceJobService(ICoinPriceService coinPriceService, IBlockCcApiService blockCcApiService)
         {
             this._log = LogManager.GetLogger(typeof(CoinPriceJobService));
             this._coinPriceService = coinPriceService;
+            this._blockCcApiService = blockCcApiService;
             this._PriceCNY = GetCNY();
         }
 
