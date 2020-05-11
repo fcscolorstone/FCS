@@ -35,7 +35,7 @@ namespace AoteNiu.Service
             this._log = LogManager.GetLogger(typeof(CoinPriceJobService));
             this._coinPriceService = coinPriceService;
             this._blockCcApiService = blockCcApiService;
-            this._PriceCNY = GetCNY();
+            this._PriceCNY = _blockCcApiService.GetCurrency(XinBu_Currency.CNY);
         }
 
         /// <summary>
@@ -53,8 +53,8 @@ namespace AoteNiu.Service
             Running = true;
             try
             {
-                decimal cny = _blockCcApiService.GetCurrency(XinBu_Currency.CNY);
-                if (cny > 0)
+                this._PriceCNY = _blockCcApiService.GetCurrency(XinBu_Currency.CNY);
+                if (this._PriceCNY > 0)
                 {
                     FlushHuobiPrice("btc", "btcusdt", "0");
                     Thread.Sleep(2000);
