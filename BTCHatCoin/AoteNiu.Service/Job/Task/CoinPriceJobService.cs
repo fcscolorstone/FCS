@@ -76,66 +76,6 @@ namespace AoteNiu.Service
             return Task.CompletedTask;
         }
 
-        private decimal GetCNY()
-        {
-            try
-            {
-                //get exchange rate from block.cc
-                var rateUrl = "http://data.block.cc/api/v1/exchange_rate?api_key=SD9R0BVD4FDCF8UO2WXD7IYSGK3RTRG2KZTSR5U";
-                var request = (HttpWebRequest)WebRequest.Create(rateUrl);
-
-                request.Method = "GET";
-                request.Accept = "*/*";
-                request.ContentType = "application/json";
-                request.Timeout = 3000;
-
-                int times = AoteNiuConst.HTTP_REQUEST_TRY_TIMES;
-                while (times-- >= 0)
-                {
-                    try
-                    {
-                        var rsp = (HttpWebResponse)request.GetResponse();
-                        if (rsp.StatusCode != HttpStatusCode.OK)
-                        {
-                            _log.Error($"GetCNY rsp.StatusCode != HttpStatusCode.OK");
-                            return 0;
-                        }
-
-                        BlockCCRateDataModel rate_data;
-                        using (var reader = new StreamReader(rsp.GetResponseStream()))
-                        {
-                            rate_data = JsonConvert.DeserializeObject<BlockCCRateDataModel>(reader.ReadToEnd()) as BlockCCRateDataModel;
-                            if (null == rate_data)
-                            {
-                                _log.Error($"GetCNY rate_data null");
-                                return 0;
-                            }
-
-                            return rate_data.data.rates.CNY;
-                        }
-                    }
-                    catch (WebException)
-                    {
-                        _log.Error($"try times = {times}");
-                        Thread.Sleep(1000);
-                        continue;
-                    }
-                }
-
-                if (times < 0)
-                {
-                    _log.Error($"GetCNY failed !!!");
-                }
-
-                return 0;
-            }
-            catch (Exception ex)
-            {
-                _log.Error(ex.ToString());
-                return 0;
-            }
-        }
-
         private void FlushHuobiPrice(string key, string full, string address)
         { 
             try
