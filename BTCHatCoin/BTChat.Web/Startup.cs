@@ -71,7 +71,7 @@ namespace BTChat.Web
             {
                 if (Configuration.GetValue<bool>("AllowQuartzJob"))
                 {
-                    quartz.AddJob<CoinPriceJobService>("CoinPriceJob", "CoinPriceJobGroup", 180);
+                    quartz.AddJob<CoinPriceJobService>("CoinPriceJob", "CoinPriceJobGroup", 300);
                 }
             });
 
