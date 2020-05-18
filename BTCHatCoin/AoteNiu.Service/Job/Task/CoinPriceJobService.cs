@@ -121,7 +121,7 @@ namespace AoteNiu.Service
                         decimal price = price_data.tick.data[0].price;
 
                         var pr = _coinPriceService.GetBySymbol(key, AoteNiuConst.HUOBI);
-                        if (pr == null)
+                        if (null == pr)
                         {
                             pr = new CoinPrice
                             {
@@ -203,7 +203,7 @@ namespace AoteNiu.Service
                         decimal price = Convert.ToDecimal(price_data.price);
 
                         var pr = _coinPriceService.GetBySymbol(key, AoteNiuConst.COINBASE);
-                        if (pr == null)
+                        if (null == pr)
                         {
                             pr = new CoinPrice
                             {
