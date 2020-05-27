@@ -102,14 +102,14 @@ namespace AoteNiu.Service
                             price_data = JsonConvert.DeserializeObject<HuobiPriceModel>(reader.ReadToEnd()) as HuobiPriceModel;
                             if (null == price_data)
                             {
-                                _log.Debug($"FlushHuobiPrice price_data null");
+                                _log.Error($"FlushHuobiPrice price_data null");
                                 return;
                             }
                         }
 
                         if (null == price_data.tick.data)
                         {
-                            _log.Debug($"FlushHuobiPrice price_data.data null");
+                            _log.Error($"FlushHuobiPrice price_data.data null");
                             return;
                         }
 
