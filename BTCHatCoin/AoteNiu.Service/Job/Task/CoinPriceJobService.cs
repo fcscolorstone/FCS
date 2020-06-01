@@ -139,6 +139,7 @@ namespace AoteNiu.Service
                     }
                     catch (WebException ex)
                     {
+                        _log.Error(ex.ToString());
                         Thread.Sleep(1000);
                         continue;
                     }
@@ -221,6 +222,7 @@ namespace AoteNiu.Service
                     }
                     catch (WebException ex)
                     {
+                        _log.Error(ex.ToString());
                         Thread.Sleep(1000);
                         continue;
                     }
