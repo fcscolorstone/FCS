@@ -43,8 +43,65 @@ namespace AoteNiu.Service
         /// <summary>
         /// 获取刷新主要币种的汇率信息
         /// </summary>
-        private void FlushRates()
+        private bool FlushRates()
         {
+            try
+            {
+                // rate api: 
+                var rateUrl = $"{_base_url}/exchange_rate?api_key={_api_key}";
+                var request = (HttpWebRequest)WebRequest.Create(rateUrl);
+
+                request.Method = "GET";
+                request.Accept = "*/*";
+                request.ContentType = "application/json";
+                request.Timeout = 3000;
+
+                int times = AoteNiuConst.HTTP_REQUEST_TRY_TIMES;
+                while (times-- >= 0)
+                {
+                    try
+                    {
+                        var rsp = (HttpWebResponse)request.GetResponse();
+                        if (rsp.StatusCode != HttpStatusCode.OK)
+                        {
+                            return false;
+                        }
+
+                        BlockCCRateDataModel rate_data;
+                        using (var reader = new StreamReader(rsp.GetResponseStream()))
+                        {
+                            rate_data = JsonConvert.DeserializeObject<BlockCCRateDataModel>(reader.ReadToEnd()) as BlockCCRateDataModel;
+                            if (null == rate_data)
+                            {
+                                return false;
+                            }
+
+                            _rateMaps[XinBu_Currency.CNY] = rate_data.data.rates.CNY;
+                            _rateMaps[XinBu_Currency.USD] = rate_data.data.rates.USD;
+                            _rateMaps[XinBu_Currency.JAP] = rate_data.data.rates.JPY;
+
+                            return true;
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        Thread.Sleep(1000);
+                        continue;
+                    }
+                }
+
+                if (times < 0)
+                {
+                    _log.Error($"FlushRates failed !!!");
+                }
+
+                return false;
+            }
+            catch (Exception ex)
+            {
+                _log.Error(ex.ToString());
+                return false;
+            }
         }
     }
 }
