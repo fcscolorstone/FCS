@@ -13,7 +13,7 @@ namespace AoteNiu.Service
     {
         private ILog _log;
 
-        private static string _api_key = "SD9R0BVD4FDCF8UO2WXD7IYSGK3RTRG2KZTSR5U";
+        private static string _api_key = "ZZMWTX2UQSDUGX4KMJIIG7RIB23ZXHA8OUWK5HBF";
         private static string _base_url = "http://data.block.cc/api/v1";
 
         private static Dictionary<XinBu_Currency, decimal> _rateMaps = new Dictionary<XinBu_Currency, decimal>();
