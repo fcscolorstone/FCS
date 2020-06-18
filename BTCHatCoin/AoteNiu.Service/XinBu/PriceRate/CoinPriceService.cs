@@ -49,12 +49,5 @@ namespace AoteNiu.Service
             Guard.ArgumentNotEmpty(address, "address");
             _coinPriceRepository.Delete(x => (x.address.ToLower() == address.ToLower()));
         }
-
-        public CoinPrice GetByPlatform(string platform)
-        {
-            Guard.ArgumentNotEmpty(platform, "platform");
-
-            return _coinPriceRepository.Find(x => (x.platform.ToLower() == platform.ToLower()))?.FirstOrDefault();
-        }
     }
 }

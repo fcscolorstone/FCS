@@ -14,7 +14,5 @@ namespace AoteNiu.Service
         CoinPrice GetByAddress(string address);
 
         void DelByAddress(string address);
-
-        CoinPrice GetByPlatform(string paltform);
     }
 }
