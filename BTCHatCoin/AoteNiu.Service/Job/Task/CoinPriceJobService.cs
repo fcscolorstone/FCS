@@ -56,10 +56,9 @@ namespace AoteNiu.Service
                 this._PriceCNY = _blockCcApiService.GetCurrency(XinBu_Currency.CNY);
                 if (this._PriceCNY > 0)
                 {
-                    FlushHuobiPrice("btc", "btcusdt", "0");
-                    Thread.Sleep(2000);
-                    FlushHuobiPrice("eth", "ethusdt", "0x0000000000000000000000000000000000000000");
-                    Thread.Sleep(2000);
+                    Thread.Sleep(1200);
+
+                    FlushTokenPrice(this._PriceCNY, $"{AoteNiuConst.BLOCK_CHAIN_TOKEN_PRICE_FCS},{AoteNiuConst.BLOCK_CHAIN_TOKEN_PRICE_ETH},{AoteNiuConst.BLOCK_CHAIN_TOKEN_PRICE_BTC},{AoteNiuConst.BLOCK_CHAIN_TOKEN_PRICE_USDT}");
                 }
             }
             catch (Exception ex)
@@ -240,6 +239,46 @@ namespace AoteNiu.Service
             {
                 _log.Error(ex.ToString());
                 return;
+            }
+        }
+
+        private void FlushTokenPrice(decimal cny, string tokens)
+        {
+            var dlist = _blockCcApiService.GetTokenPriceUsd(tokens);
+            foreach (var item in dlist)
+            {
+                var pr = _coinPriceService.GetBySymbol(item.name, AoteNiuConst.HUOBI);
+                if (pr == null)
+                {
+                    string contract = string.Empty;
+                    if (item.name == AoteNiuConst.BLOCK_CHAIN_TOKEN_PRICE_FCS)
+                    {
+                        //contract = _walletService.GetFcsContract();
+                    }
+                    else if (item.name == AoteNiuConst.BLOCK_CHAIN_TOKEN_PRICE_ETH)
+                    {
+                        contract = AoteNiuConst.BLOCK_CHAIN_SYSTEM_CONTRACT_ETH;
+                    }
+
+                    pr = new CoinPrice
+                    {
+                        //ctype = BTChat_BlockChain_Type.Ethereum,
+                        address = contract,
+                        platform = AoteNiuConst.HUOBI,
+                        symbol = item.name,
+                        price_usd = item.price_usd,
+                        price = item.price * cny,
+                        ctime = DateTime.Now
+                    };
+                }
+                else
+                {
+                    pr.price = item.price * cny;
+                    pr.price_usd = item.price_usd;
+                    pr.price_btc = item.price_btc;
+                }
+
+                _coinPriceService.Update(pr);
             }
         }
     }

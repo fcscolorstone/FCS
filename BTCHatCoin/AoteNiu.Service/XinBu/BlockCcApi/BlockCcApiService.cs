@@ -40,6 +40,63 @@ namespace AoteNiu.Service
             return _rateMaps[currency];
         }
 
+        public IList<BlockCCPriceDataModel> GetTokenPriceUsd(string tokens)
+        {
+            List<BlockCCPriceDataModel> model = new List<BlockCCPriceDataModel>();
+            try
+            {
+                var url = $"{_base_url}/price?api_key={_api_key}&symbol_name={tokens}";
+                var request = (HttpWebRequest)WebRequest.Create(url);
+
+                request.Method = "GET";
+                request.Accept = "*/*";
+                request.ContentType = "application/json";
+                request.Timeout = 3000;
+
+                int times = AoteNiuConst.HTTP_REQUEST_TRY_TIMES;
+                while (times-- >= 0)
+                {
+                    try
+                    {
+                        var rsp = (HttpWebResponse)request.GetResponse();
+                        if (rsp.StatusCode != HttpStatusCode.OK)
+                        {
+                            continue;
+                        }
+
+                        BlockCCPriceModel price_data;
+                        using (var reader = new StreamReader(rsp.GetResponseStream()))
+                        {
+                            price_data = JsonConvert.DeserializeObject<BlockCCPriceModel>(reader.ReadToEnd()) as BlockCCPriceModel;
+                            if (null == price_data)
+                            {
+                                return model;
+                            }
+
+                            return price_data.data;
+                        }
+                    }
+                    catch (WebException)
+                    {
+                        Thread.Sleep(100);
+                        continue;
+                    }
+                }
+
+                if (times < 0)
+                {
+                    _log.Error($"GetTokenPriceUsd: {tokens} failed !!!");
+                    return model;
+                }
+            }
+            catch (Exception ex)
+            {
+                _log.Error(ex.ToString());
+            }
+
+            return model;
+        }
+
         /// <summary>
         /// 获取刷新主要币种的汇率信息
         /// </summary>

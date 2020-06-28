@@ -28,6 +28,9 @@ namespace AoteNiu
         public static readonly string BLOCK_CHAIN_TOKEN_PRICE_USDT = "usdt";
         public static readonly string BLOCK_CHAIN_TOKEN_PRICE_BTC = "bitcoin";
 
+        public static readonly string BLOCK_CHAIN_SYSTEM_CONTRACT_ETH = "0x000000000000000";
+        public static readonly string BLOCK_CHAIN_SYSTEM_CONTRACT_BTC = "0x111111111111111";
+
         public static readonly string BINANCE = "binance";
         public static readonly string HUOBI = "huobi";
         public static readonly string COINBASE = "coinbase";

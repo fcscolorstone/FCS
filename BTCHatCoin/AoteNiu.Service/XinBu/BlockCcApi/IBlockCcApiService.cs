@@ -8,5 +8,7 @@ namespace AoteNiu.Service
     public interface IBlockCcApiService
     {
         decimal GetCurrency(XinBu_Currency currency);
+
+        IList<BlockCCPriceDataModel> GetTokenPriceUsd(string tokens);
     }
 }
